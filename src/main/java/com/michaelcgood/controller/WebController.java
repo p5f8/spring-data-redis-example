@@ -35,12 +35,14 @@ public class WebController {
     }
 
     @RequestMapping("/values")
-    public @ResponseBody Map<String, String> findAll() {
+    public @ResponseBody Map<String, Object> findAll() {
         Map<Object, Object> aa = redisRepository.findAllMovies();
-        Map<String, String> map = new HashMap<String, String>();
+//        Map<String, String> map = new HashMap<String, String>();
+        Map<String, Object> map = new HashMap<>();
         for(Map.Entry<Object, Object> entry : aa.entrySet()){
             String key = (String) entry.getKey();
-            map.put(key, aa.get(key).toString());
+            Movie value = (Movie) aa.get(key);
+            map.put(key, value.getName());
         }
         return map;
     }

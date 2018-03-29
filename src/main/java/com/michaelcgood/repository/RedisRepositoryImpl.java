@@ -28,7 +28,8 @@ public class RedisRepositoryImpl implements RedisRepository {
     }
     
     public void add(final Movie movie) {
-        hashOperations.put(KEY, movie.getId(), movie.getName());
+        //hashOperations.put(KEY, movie.getId(), movie.getName());
+        hashOperations.put(KEY, movie.getId(), movie);
     }
 
     public void delete(final String id) {
